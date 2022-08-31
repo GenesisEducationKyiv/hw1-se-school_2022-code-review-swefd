@@ -1,35 +1,28 @@
-const config = require("../../config/config.json");
 const SendEmailsService = require("../services/sendEmails.service");
-const RateService = require("../services/rate.service");
+const httpErrors = require("../http-responses/http-errors");
 
 class SendEmailsController {
   async sendRateToAllSubscribers(req, res) {
-    RateService.getRate()
-      .then((rate) => {
-        const subscribedEmails = SendEmailsService.getSubscribersEmails();
-        subscribedEmails.forEach((emailAddress) => {
-          if (config.app.fakeSMTP === "true") {
-            console.log(config.app.fakeSMTP);
-            const mailOptions = {
-              from: config.mailTrap.from,
-              to: emailAddress,
-              subject: config.mailTrap.subject,
-              text: `Current BTC/UAH rate is ${rate} (Binance)`,
-            };
-            SendEmailsService.sendFakeEmail(mailOptions);
-          } else {
-            SendEmailsService.sendRealEmail(emailAddress, rate);
-          }
-        });
+    const emailsPromises =
+      await SendEmailsService.sendBtcUahRateToAllSubscribers();
+
+    Promise.all(emailsPromises)
+      .then((emails) => {
         const responseMessage = {
           message: "Emails sent successfully",
-          emailAddress: subscribedEmails,
+          info: emails,
         };
+
         res.status(200).type("json").send(responseMessage);
       })
-      .catch((err) => {
-        res.status(503).send(err);
-        console.error(err);
+      .catch((error) => {
+        if (error instanceof httpErrors.HttpError) {
+          res.status(error.statusCode).type("json").send({
+            message: error.message,
+          });
+        } else {
+          throw error;
+        }
       });
   }
 }
