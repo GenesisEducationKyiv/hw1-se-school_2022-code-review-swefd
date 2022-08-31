@@ -46,7 +46,14 @@ class EmailsService {
             };
             emailsSendPromises.push(this.sendFakeEmail(mailOptions));
           } else {
-            this.sendRealEmail(emailAddress, rate);
+            const emailDetails = this.createEmail(
+              "gses2app@mail.com",
+              "GSES APP",
+              config.mailTrap.subject,
+              `Current BTC/UAH Rate: ${rate}`,
+              emailAddress
+            );
+            this.sendRealEmail(emailDetails);
           }
         });
         return emailsSendPromises;
@@ -59,13 +66,17 @@ class EmailsService {
     return Promises;
   }
 
-  sendRealEmail(emailAddress, rate) {
-    new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail({
-      sender: { email: "gses2app@mail.com", test: "Test Name" },
-      subject: config.mailTrap.subject,
-      textContent: `Current BTC/UAH Rate: ${rate}`,
-      to: [{ email: emailAddress }],
-    });
+  createEmail(senderAddress, senderName, subject, textContent, recipientEmail) {
+    return {
+      sender: { email: senderAddress, name: senderName },
+      subject: subject,
+      textContent: textContent,
+      to: [{ email: recipientEmail }],
+    };
+  }
+
+  sendRealEmail(emailDetails) {
+    new SibApiV3Sdk.TransactionalEmailsApi().sendTransacEmail(emailDetails);
   }
 }
 
