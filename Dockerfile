@@ -1,6 +1,5 @@
 FROM node:17
 
-# Wiorking Dir
 WORKDIR /app
 
 COPY package*.json ./

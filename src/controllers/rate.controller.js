@@ -7,7 +7,6 @@ class RateController {
         res.send(result);
       })
       .catch((err) => {
-        console.error(toString(err));
         res.status(409).send(err);
       });
   }
