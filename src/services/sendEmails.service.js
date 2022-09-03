@@ -1,4 +1,4 @@
-const config = require("../../config/config.json");
+const config = require("../../config/config.js");
 const nodemailer = require("nodemailer");
 const SibApiV3Sdk = require("sib-api-v3-sdk");
 const fs = require("fs");

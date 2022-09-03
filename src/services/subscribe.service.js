@@ -1,7 +1,7 @@
 const fs = require("fs");
 const HttpErrors = require("../http-responses/http-errors");
 
-const config = require("../../config/config.json");
+const config = require("../../config/config.js");
 
 class SubscribeService {
   readEmailsFromFile() {

@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = require("./src/routes/index");
-const config = require("./config/config.json");
+const config = require("./config/config.js");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 
