@@ -7,25 +7,25 @@ class HttpError extends Error {
 
 class UnauthorizedError extends HttpError {
   constructor(message) {
-    super(401, message);
+    super(401, message || "Unauthorized");
   }
 }
 
 class ConflictError extends HttpError {
   constructor(message) {
-    super(409, message);
+    super(409, message || "Conflict");
   }
 }
 
 class TeapotError extends HttpError {
   constructor(message) {
-    super(418, message);
+    super(418, message || " I'm a teapot");
   }
 }
 
 class ServiceUnavailableError extends HttpError {
   constructor(message) {
-    super(503, message);
+    super(503, message || "Service Unavailable");
   }
 }
 

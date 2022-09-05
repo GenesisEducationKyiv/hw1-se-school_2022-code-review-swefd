@@ -24,12 +24,15 @@ class EmailsService {
     return fs.readFileSync(process.cwd() + config.db.path, "utf-8").split("\n");
   }
 
+  /*
+   * FIXME: sendFakeEmail
+   *  use bulk sending instead of promises
+   *  transporter.sendMail() method can send same message to many addresses
+   */
   sendFakeEmail(mailOptions) {
     const transporter = this.getMailTransporter();
     return transporter.sendMail(mailOptions);
   }
-
-  //generateRealEmail() {}
 
   async sendBtcUahRateToAllSubscribers() {
     const Promises = await RateService.getRate()
@@ -44,6 +47,7 @@ class EmailsService {
               subject: config.mailTrap.subject,
               text: `Current BTC/UAH rate is ${rate} (Binance)`,
             };
+            // FIXME: SendFakeEmail change promises to bulk Send
             emailsSendPromises.push(this.sendFakeEmail(mailOptions));
           } else {
             const emailDetails = this.createEmail(
