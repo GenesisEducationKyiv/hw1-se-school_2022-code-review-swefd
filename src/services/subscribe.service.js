@@ -1,21 +1,27 @@
 const fs = require("fs");
 const HttpErrors = require("../http-responses/http-errors");
 
-const config = require("../../config/config.json");
+const config = require("../../config/config.js");
 
 class SubscribeService {
+  // TODO: Move to repository
   readEmailsFromFile() {
     return fs.promises.readFile(process.cwd() + config.db.path, {
       encoding: "utf8",
     });
   }
-
+  // TODO: Move to repository
   addEmailToFile(email) {
     return fs.promises.appendFile(
       process.cwd() + config.db.path,
       "\n" + email,
       { encoding: "utf8" }
     );
+  }
+
+  isEmailValid(email) {
+    const emailValidationRule = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailValidationRule.test(email);
   }
 
   async isEmailAlreadySubscribed(email) {
@@ -26,11 +32,12 @@ class SubscribeService {
   }
 
   async subscribeEmail(email) {
-    if (await this.isEmailAlreadySubscribed(email)) {
+    if (!this.isEmailValid(email)) {
+      throw new HttpErrors.ConflictError("email is not valid");
+    } else if (await this.isEmailAlreadySubscribed(email)) {
       throw new HttpErrors.ConflictError("already subscribed");
     } else {
       this.addEmailToFile(email).catch((err) => {
-        console.error(err);
         throw new HttpErrors.TeapotError(
           "I'm a teapot :D \n Teapot can`t find the file"
         );

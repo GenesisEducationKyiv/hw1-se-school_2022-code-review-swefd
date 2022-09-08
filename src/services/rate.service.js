@@ -7,7 +7,7 @@ class RateService {
       .then((res) => {
         return Math.round(res.data["price"]).toString();
       });
-    return response;
+    return Number(response);
   }
 }
 
