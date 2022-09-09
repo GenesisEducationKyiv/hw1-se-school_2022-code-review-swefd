@@ -9,8 +9,8 @@ const dev = {
   mailTrap: {
     host: "smtp.mailtrap.io",
     port: "2525",
-    user: "0",
-    pass: "0",
+    user: "7a37b2c854d917",
+    pass: "5e5e09f4d76338",
     from: "gses2btc.uah@mail.com",
     subject: "BTC Rate BTC/UAH",
   },
@@ -35,8 +35,8 @@ const test = {
   mailTrap: {
     host: "smtp.mailtrap.io",
     port: "2525",
-    user: "0",
-    pass: "0",
+    user: "7a37b2c854d917",
+    pass: "5e5e09f4d76338",
     from: "gses2btc.uah@mail.com",
     subject: "BTC Rate BTC/UAH",
   },
