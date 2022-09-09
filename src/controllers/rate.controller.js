@@ -7,7 +7,7 @@ class RateController {
         res.status(200).type("json").send({ rate: result });
       })
       .catch((err) => {
-        res.status(409).send(err);
+        res.status(409).send(err); // temp solution
       });
   }
 }

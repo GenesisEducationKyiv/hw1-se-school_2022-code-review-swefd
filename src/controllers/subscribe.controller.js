@@ -18,7 +18,7 @@ class SubscribeController {
             message: error.message,
           });
         } else {
-          throw error;
+          res.status(409).send(error); // temp solution
         }
       });
   }
