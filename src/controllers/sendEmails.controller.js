@@ -21,7 +21,8 @@ class SendEmailsController {
             message: error.message,
           });
         } else {
-          throw error;
+          // TODO: Add middleware error handler
+          res.status(409).send(error); // temp solution
         }
       });
   }

@@ -4,6 +4,7 @@ const SibApiV3Sdk = require("sib-api-v3-sdk");
 const fs = require("fs");
 const RateService = require("./rate.service");
 const HttpErrors = require("../http-responses/http-errors");
+const SubscribersRepository = require("../repository/subscribers.repository");
 
 SibApiV3Sdk.ApiClient.instance.authentications["api-key"].apiKey =
   config.mail.API_KEY;
@@ -37,7 +38,7 @@ class EmailsService {
   async sendBtcUahRateToAllSubscribers() {
     const Promises = await RateService.getRate()
       .then((rate) => {
-        const subscribedEmails = this.getSubscribersEmails();
+        const subscribedEmails = SubscribersRepository.getAll();
         let emailsSendPromises = [];
         subscribedEmails.forEach((emailAddress) => {
           if (config.app.fakeSMTP === "true") {

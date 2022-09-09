@@ -4,7 +4,7 @@ const should = chai.should();
 
 const MockFS = require("mock-fs");
 
-const SubscribeService = require("../../src/services/subscribe.service");
+const SubscribersRepository = require("../../src/repository/subscribers.repository");
 
 describe("db.txt file R/W", () => {
   before(() => {
@@ -22,19 +22,15 @@ describe("db.txt file R/W", () => {
   });
 
   it("should read emails from file", function () {
-    return SubscribeService.readEmailsFromFile().then((email) => {
-      email.should.contain("test@mail.com");
-    });
+    const emails = SubscribersRepository.getAll();
+    emails.should.contain("test@mail.com");
   });
 
   it("should write emails to file", function () {
     const emailToWrite = "test1@mail.com";
-    return SubscribeService.addEmailToFile(emailToWrite).then(() => {
-      return SubscribeService.readEmailsFromFile(config.db.path).then(
-        (email) => {
-          email.should.contain(emailToWrite);
-        }
-      );
+    return SubscribersRepository.append(emailToWrite).then(() => {
+      const emails = SubscribersRepository.getAll(config.db.path);
+      emails.should.contain(emailToWrite);
     });
   });
 });
