@@ -1,8 +1,8 @@
-const SendEmailsService = require("../services/sendEmails.service");
-const httpErrors = require("../http-responses/http-errors");
+import SendEmailsService from "../services/sendEmails/sendEmails.service";
+import httpErrors from "../http-responses/http-errors";
 
 class SendEmailsController {
-  async sendRateToAllSubscribers(req, res) {
+  async sendRateToAllSubscribers(req: any, res: any) {
     const emailsPromises =
       await SendEmailsService.sendBtcUahRateToAllSubscribers();
 
@@ -28,4 +28,4 @@ class SendEmailsController {
   }
 }
 
-module.exports = new SendEmailsController();
+export default new SendEmailsController();

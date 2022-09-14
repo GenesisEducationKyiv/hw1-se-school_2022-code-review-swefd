@@ -1,8 +1,8 @@
-const SubscribeService = require("../services/subscribe.service");
-const httpErrors = require("../http-responses/http-errors");
+import SubscribeService from "../services/subscribe/subscribe.service";
+import httpErrors from "../http-responses/http-errors";
 
 class SubscribeController {
-  async addEmail(req, res) {
+  async addEmail(req: any, res: any) {
     const reqEmail = req.body.email.toLowerCase();
 
     SubscribeService.subscribeEmail(reqEmail)
@@ -24,4 +24,4 @@ class SubscribeController {
   }
 }
 
-module.exports = new SubscribeController();
+export default new SubscribeController();

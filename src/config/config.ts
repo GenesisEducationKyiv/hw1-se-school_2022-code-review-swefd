@@ -57,4 +57,4 @@ const config = {
   test,
 };
 
-module.exports = config[process.env.NODE_ENV];
+export default config["test"];
