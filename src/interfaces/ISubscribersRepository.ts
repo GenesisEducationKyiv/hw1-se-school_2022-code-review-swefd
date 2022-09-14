@@ -1,7 +1,7 @@
-import { ISubscriberModel, SubscriberModel } from "../models/subscriber.model";
+import { ISubscriberModel } from "../models/subscriber.model";
 
 interface ISubscribersRepository {
-  append(subscriber: SubscriberModel): any;
+  append(subscriber: ISubscriberModel): any;
   includesEmail(email: string): Promise<boolean>;
   getAllSubscribers(): ISubscriberModel[];
   getAllEmails(): string[];
