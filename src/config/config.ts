@@ -24,6 +24,19 @@ const dev = {
   db: {
     path: "/src/models/db.txt",
   },
+  currencyProviders: [
+    {
+      id: 0,
+      name: "binance",
+      url: "https://api.binance.com/api/v3/ticker/price?symbol={CURRENCY1}{CURRENCY2}",
+    },
+
+    {
+      id: 1,
+      name: "coingeco",
+      url: "https://api.coingecko.com/api/v3/simple/price?ids={CURRENCY1}&vs_currencies={CURRENCY2}",
+    },
+  ],
 };
 
 const test = {
@@ -50,6 +63,19 @@ const test = {
   db: {
     path: "/src/models/db.txt",
   },
+  currencyProviders: [
+    {
+      id: 0,
+      name: "binance",
+      url: "https://api.binance.com/api/v3/ticker/price?symbol={CURRENCY1}{CURRENCY2}",
+    },
+
+    {
+      id: 1,
+      name: "coingeco",
+      url: "https://api.coingecko.com/api/v3/simple/price?ids={CURRENCY1}&vs_currencies={CURRENCY2}",
+    },
+  ],
 };
 
 const config = {

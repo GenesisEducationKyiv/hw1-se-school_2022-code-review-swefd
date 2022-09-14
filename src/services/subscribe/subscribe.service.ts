@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import HttpErrors from "../../http-responses/http-errors";
 import SubscribersRepository from "../../repository/subscribers.repository";
 import { SubscriberModel } from "../../models/subscriber.model";
