@@ -1,4 +1,4 @@
-type rate = number | null;
+type rate = number;
 
 interface ICurrencyRateProviderService {
   readonly reqUrl: string;

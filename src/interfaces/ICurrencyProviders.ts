@@ -2,7 +2,7 @@ import { ICurrencyRateServiceFactory } from "./ICurrencyRateServiceFactory";
 
 interface ICurrencyProviders {
   readonly main: ICurrencyRateServiceFactory;
-  readonly list: Map<number, ICurrencyRateServiceFactory>;
+  readonly list: ICurrencyRateServiceFactory[];
 }
 
 export { ICurrencyProviders };

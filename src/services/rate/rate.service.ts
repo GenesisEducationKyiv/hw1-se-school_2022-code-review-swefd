@@ -1,4 +1,4 @@
-import { CurrencyProvider } from "./curencyProviders/CurrencyProviders";
+import { CurrencyProvider } from "./curencyProviders/currencyProviders";
 
 class RateService {
   getRate() {
