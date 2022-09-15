@@ -5,8 +5,8 @@ const MockFS = require("mock-fs");
 const server = require("../../app");
 
 chai.use(chaiHttp);
-// FIXME: refactor this test
 
+// FIXME: refactor this test
 describe("Endpoint /api/sendEmails", () => {
   before(() => {
     MockFS({

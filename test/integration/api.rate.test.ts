@@ -53,20 +53,35 @@ describe("Endpoint /api/rate", () => {
       });
   });
 
-  it("should request rate from MOCK, and return HTTP 409 to as response", (done) => {
+  it("should request rate from second provider, and return HTTP 200 to as response", (done) => {
     const binanceResponseMock = {
       message: "Conflict",
     };
-    
+
+    const coingecoResponceMock = {
+      bitcoin: {
+        uah: 987654,
+      },
+    };
+
+    const expectedResponse = {
+      rate: 987654,
+    };
+
     nock("https://api.binance.com")
       .get("/api/v3/ticker/price?symbol=BTCUAH")
       .reply(409, binanceResponseMock);
+
+    nock("https://api.coingecko.com")
+      .get("/api/v3/simple/price?ids=bitcoin&vs_currencies=uah")
+      .reply(200, coingecoResponceMock);
 
     chai
       .request(server)
       .get("/api/rate")
       .end((err, res) => {
-        res.should.have.status(409);
+        res.should.have.status(200);
+        res.body.should.deep.equals(expectedResponse);
         done();
       });
   });
