@@ -37,6 +37,10 @@ const dev = {
       url: "https://api.coingecko.com/api/v3/simple/price?ids={CURRENCY1}&vs_currencies={CURRENCY2}",
     },
   ],
+  cache: {
+    enable: true,
+    duration: 300,
+  },
 };
 
 const test = {
@@ -76,6 +80,10 @@ const test = {
       url: "https://api.coingecko.com/api/v3/simple/price?ids={CURRENCY1}&vs_currencies={CURRENCY2}",
     },
   ],
+  cache: {
+    enable: true,
+    duration: 300,
+  },
 };
 
 const config = {
