@@ -1,8 +1,8 @@
-import { CurrencyProvider } from "./curencyProviders/currencyProviders";
+import { FactoriesManager } from "./factories/factoriesManager";
 
 class RateService {
   getRate() {
-    return CurrencyProvider.main.create().getRate();
+    return FactoriesManager.main.create().getRate();
   }
 }
 

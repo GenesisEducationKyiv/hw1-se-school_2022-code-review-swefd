@@ -1,4 +1,4 @@
-import { ISubscriberModel } from "../models/subscriber.model";
+import { ISubscriberModel } from "../../models/subscriber.model";
 
 interface ISubscribersRepository {
   append(subscriber: ISubscriberModel): Promise<void>;

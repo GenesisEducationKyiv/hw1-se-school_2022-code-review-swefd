@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import config from "../config/config";
-import { ISubscribersRepository } from "../interfaces/ISubscribersRepository";
+import { ISubscribersRepository } from "./interfaces/ISubscribersRepository";
 import { ISubscriberModel, SubscriberModel } from "../models/subscriber.model";
 
 class SubscribersRepository implements ISubscribersRepository {
