@@ -2,6 +2,7 @@ import config from "../../../config/config";
 import { ICurrencyRateProviderService } from "../providers/interfaces/ICurrencyRateProviderService";
 import { CoingecoService } from "../providers/rate.coingeco.service";
 import { providerFactory } from "./providerFactory";
+import { ProviderLogger } from "../../../utils/logger";
 
 class CoingecoProviderFactory extends providerFactory {
   readonly url: string = config.currencyProviders[1].url;
@@ -26,7 +27,7 @@ class CoingecoProviderFactory extends providerFactory {
       this.currency2
     );
     coingecoService.setNext(this.nextProvider);
-    return coingecoService;
+    return new ProviderLogger(coingecoService);
   }
 }
 

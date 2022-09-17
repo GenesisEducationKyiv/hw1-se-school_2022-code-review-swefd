@@ -1,8 +1,8 @@
 type rate = number;
 
 interface ICurrencyRateProviderService {
-  readonly reqUrl: string;
   getRate(): Promise<rate>;
+  getName(): string;
 }
 
 export { ICurrencyRateProviderService, rate };

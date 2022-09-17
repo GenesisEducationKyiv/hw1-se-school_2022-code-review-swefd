@@ -2,6 +2,7 @@ import config from "../../../config/config";
 import { ICurrencyRateProviderService } from "../providers/interfaces/ICurrencyRateProviderService";
 import { BinanceService } from "../providers/rate.binance.service";
 import { providerFactory } from "./providerFactory";
+import { ProviderLogger } from "../../../utils/logger";
 
 class BinanceProviderFactory extends providerFactory {
   readonly url: string = config.currencyProviders[0].url;
@@ -26,7 +27,7 @@ class BinanceProviderFactory extends providerFactory {
       this.currency2
     );
     binanceService.setNext(this.nextProvider || null);
-    return binanceService;
+    return new ProviderLogger(binanceService);
   }
 }
 

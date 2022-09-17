@@ -20,7 +20,6 @@ abstract class RateProviderService
 
   protected constructor(reqUrl: string, currency1: string, currency2: string) {
     this.reqUrl = reqUrl;
-    this.reqUrl = reqUrl;
     this.currency1 = currency1;
     this.currency2 = currency2;
   }
@@ -66,6 +65,10 @@ abstract class RateProviderService
   setNext(factory: providerFactory | null): providerFactory {
     this.nextProvider = factory;
     return <providerFactory>factory;
+  }
+
+  getName(): string {
+    return this.cacheKey;
   }
 }
 
