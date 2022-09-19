@@ -4,11 +4,10 @@
   "description": "Genesis Software Engineering School",
   "main": "src/app.ts",
   "scripts": {
-    "test": "NODE_ENV=test nyc --reporter=text mocha -r ts-node/register test/**/**.test.ts --timeout 15000",
+    "test": "NODE_ENV=test CRYPTO_CURRENCY_PROVIDER=0 LOCAL_CACHE_TTL=300 nyc --reporter=text mocha -r ts-node/register test/**/**.test.ts --timeout 15000",
     "start": "npm run build && node dist/src/app.js",
     "devStart": "NODE_ENV=dev nodemon src/app.ts",
     "devStartTs": "tsc && ts-node src/app.ts",
-    "devTest": "nodemon",
     "build": "tsc"
   },
   "author": "Oleksandr Chornous <oleksandr.cho@gmail.com>",
