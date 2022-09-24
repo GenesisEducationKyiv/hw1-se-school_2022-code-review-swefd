@@ -9,6 +9,11 @@ Uses the Binance API.
 
 - [@Oleksandr Chornous](https://github.com/swefd)
 
+## Architecture
+
+![Architecture](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/architecture.png)
+
+
 ## Config variables
 
 To run this project, you will **need to add/change** the following variables in `./config/config.json` file.
@@ -116,26 +121,26 @@ To run this project, you will **need to add/change** the following variables in 
 
 ### Email
 
-![EMAIL](https://raw.githubusercontent.com/swefd/gses2/master/demo/email.png)
+![EMAIL](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/email.png)
 
 ### API getRate
 
-![EMAIL](https://raw.githubusercontent.com/swefd/gses2/master/demo/getRate.png)
+![EMAIL](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/getRate.png)
 
 ### API subscribe
 
-![EMAIL](https://raw.githubusercontent.com/swefd/gses2/master/demo/subscribe.png)
+![EMAIL](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/subscribe.png)
 
 ### API sendEmails
 
-![EMAIL](https://raw.githubusercontent.com/swefd/gses2/master/demo/sendEmails.png)
+![EMAIL](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/sendEmails.png)
 
 ## Run in Docker
 
 Clone the project
 
 ```bash
-  git clone https://github.com/swefd/gses2
+  git clone https://github.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd
 ```
 
 Go to the project directory
@@ -161,7 +166,7 @@ Run container
 Clone the project
 
 ```bash
-  git clone https://github.com/swefd/gses2
+  git clone https://github.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd
 ```
 
 Go to the project directory
