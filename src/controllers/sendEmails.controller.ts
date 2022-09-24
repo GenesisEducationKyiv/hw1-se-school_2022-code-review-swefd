@@ -1,8 +1,9 @@
 import SendEmailsService from "../services/sendEmails/sendEmails.service";
 import httpErrors from "../http-responses/http-errors";
+import { Request, Response } from "express";
 
 class SendEmailsController {
-  async sendRateToAllSubscribers(req: any, res: any) {
+  async sendRateToAllSubscribers(req: Request, res: Response) {
     const emailsPromises =
       await SendEmailsService.sendBtcUahRateToAllSubscribers();
 

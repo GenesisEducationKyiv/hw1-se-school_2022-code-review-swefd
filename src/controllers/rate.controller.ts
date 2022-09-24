@@ -1,7 +1,8 @@
 import RateService from "../services/rate/rate.service";
+import { Request, Response } from "express";
 
 class RateController {
-  async getRate(req: any, res: any) {
+  async getRate(req: Request, res: Response) {
     RateService.getRate()
       .then((result: any) => {
         res.status(200).type("json").send({ rate: result });

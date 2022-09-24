@@ -1,8 +1,9 @@
 import SubscribeService from "../services/subscribe/subscribe.service";
 import httpErrors from "../http-responses/http-errors";
+import { Request, Response } from "express";
 
 class SubscribeController {
-  async addEmail(req: any, res: any) {
+  async addEmail(req: Request, res: Response) {
     const reqEmail = req.body.email.toLowerCase();
 
     SubscribeService.subscribeEmail(reqEmail)
