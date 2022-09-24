@@ -1,8 +1,8 @@
-const chai = require("chai");
+import * as chai from "chai";
 const should = chai.should();
-const chaiHttp = require("chai-http");
+import chaiHttp = require("chai-http");
+import server from "../../src/app";
 const MockFS = require("mock-fs");
-const server = require("../../app");
 
 chai.use(chaiHttp);
 
