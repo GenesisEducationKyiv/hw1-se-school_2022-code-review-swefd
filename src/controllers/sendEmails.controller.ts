@@ -1,6 +1,7 @@
 import SendEmailsService from "../services/sendEmails/sendEmails.service";
 import httpErrors from "../http-responses/http-errors";
 import { Request, Response } from "express";
+import { HttpCode } from "../http-responses/http-code.enum";
 
 class SendEmailsController {
   async sendRateToAllSubscribers(req: Request, res: Response) {
@@ -14,7 +15,7 @@ class SendEmailsController {
           info: emails,
         };
 
-        res.status(200).type("json").send(responseMessage);
+        res.status(HttpCode.OK).type("json").send(responseMessage);
       })
       .catch((error) => {
         if (error instanceof httpErrors.HttpError) {
@@ -23,7 +24,7 @@ class SendEmailsController {
           });
         } else {
           // TODO: Add middleware error handler
-          res.status(409).send(error); // temp solution
+          res.status(HttpCode.CONFLICT).send(error); // temp solution
         }
       });
   }

@@ -1,6 +1,7 @@
 import SubscribeService from "../services/subscribe/subscribe.service";
 import httpErrors from "../http-responses/http-errors";
 import { Request, Response } from "express";
+import { HttpCode } from "../http-responses/http-code.enum";
 
 class SubscribeController {
   async addEmail(req: Request, res: Response) {
@@ -9,7 +10,7 @@ class SubscribeController {
     SubscribeService.subscribeEmail(reqEmail)
       .then(() => {
         res
-          .status(200)
+          .status(HttpCode.OK)
           .type("json")
           .send({ message: `${reqEmail} successfully subscribed` });
       })
@@ -19,7 +20,7 @@ class SubscribeController {
             message: error.message,
           });
         } else {
-          res.status(409).send(error); // temp solution
+          res.status(HttpCode.CONFLICT).send(error); // temp solution
         }
       });
   }
