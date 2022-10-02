@@ -11,7 +11,7 @@ export class EmailController {
   @UseFilters(new HttpExceptionFilter())
   async sendEmails() {
     return this.emailService.sendRateToAll().then(() => {
-      return { message: "All Emails were sent successfully" };
+      return { message: 'All Emails were sent successfully' };
     });
   }
 }
