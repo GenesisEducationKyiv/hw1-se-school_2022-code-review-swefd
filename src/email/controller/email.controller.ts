@@ -10,8 +10,8 @@ export class EmailController {
   @HttpCode(200)
   @UseFilters(new HttpExceptionFilter())
   async sendEmails() {
-    return this.emailService.sendToAll().then(() => {
-      return { message: 'All Emails were sent successfully' };
+    return this.emailService.sendRateToAll().then(() => {
+      return { message: "All Emails were sent successfully" };
     });
   }
 }
