@@ -1,13 +1,13 @@
-import { ICurrencyProvider } from "./interfaces";
-import { CurrencyPairDto, RateResponseDto } from "../dto";
-import { lastValueFrom, map } from "rxjs";
-import { HttpService } from "@nestjs/axios";
+import { ICurrencyProvider } from './interfaces';
+import { CurrencyPairDto, RateResponseDto } from '../dto';
+import { lastValueFrom, map } from 'rxjs';
+import { HttpService } from '@nestjs/axios';
 
 export abstract class AbstractProvider implements ICurrencyProvider {
-  protected constructor(protected httpService: HttpService) {}
-
-  protected url;
   nextHandler: ICurrencyProvider;
+  protected url;
+
+  protected constructor(protected httpService: HttpService) {}
 
   public setNext(handler: ICurrencyProvider): ICurrencyProvider {
     this.nextHandler = handler;
@@ -34,6 +34,6 @@ export abstract class AbstractProvider implements ICurrencyProvider {
 
   abstract parseRate(
     currencyPair: CurrencyPairDto,
-    response: any
+    response: any,
   ): RateResponseDto;
 }

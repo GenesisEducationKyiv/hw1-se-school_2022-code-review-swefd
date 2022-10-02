@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { AbstractProvider } from './abstractProvider';
+import { AbstractProvider } from '../abstractProvider';
 import { HttpService } from '@nestjs/axios';
-import { CurrencyPairDto, RateResponseDto } from '../dto';
+import { CurrencyPairDto, RateResponseDto } from '../../dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()

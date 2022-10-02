@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { AbstractProvider } from './abstractProvider';
-import { CurrencyPairDto, RateResponseDto } from '../dto';
-import { Currency } from '../../utils/enums/currency/currency.enum';
+import { AbstractProvider } from '../abstractProvider';
+import { CurrencyPairDto, RateResponseDto } from '../../dto';
+import { Currency } from '../../../utils/enums/currency/currency.enum';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 
