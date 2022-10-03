@@ -13,7 +13,8 @@ export class SubscriptionService {
 
   public async addNewEmail(email: string) {
     try {
-      if (!(await this.repository.includesEmail(email))) {
+      const includesEmail = await this.repository.includesEmail(email);
+      if (includesEmail) {
         await this.repository.append(new SubscriberDTO(email));
         return 'Email successfully subscribed';
       } else {
