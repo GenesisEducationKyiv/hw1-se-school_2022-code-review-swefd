@@ -2,8 +2,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import currencyProvidersConfigFile from '../config/config';
 import { CURRENCY_PROVIDER, ICurrencyProvider } from '../providers/interfaces';
 import { HttpService } from '@nestjs/axios';
-import { Binance } from '../providers';
-import { Coingeco } from '../providers';
+import { Binance, Coingeco } from '../providers';
 
 export const config = ConfigModule.forRoot({
   load: [currencyProvidersConfigFile],

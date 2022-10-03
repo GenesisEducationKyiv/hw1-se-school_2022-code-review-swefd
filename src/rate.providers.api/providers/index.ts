@@ -1,2 +1,2 @@
-export { Binance } from './binance';
-export { Coingeco } from './coingeco';
+export { Binance } from './binance/binance';
+export { Coingeco } from './coingeco/coingeco';

@@ -13,6 +13,7 @@ import { RateService } from '../service/rate.service';
 @UseInterceptors(CacheInterceptor)
 export class RateController {
   constructor(private rateService: RateService) {}
+
   @Get()
   public async getRate() {
     try {
