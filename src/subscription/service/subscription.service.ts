@@ -1,10 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { SubscriberDTO } from '../../repository/dto/subscriber.dto';
-import { SubscribersRepository } from '../../repository/service/repository.service';
+import {
+  ISubscribersRepository,
+  SUBSCRIBERS_REPOSITORY,
+} from '../../repository/interface/ISubscribersRepository';
 
 @Injectable()
 export class SubscriptionService {
-  constructor(private repository: SubscribersRepository) {}
+  constructor(
+    @Inject(SUBSCRIBERS_REPOSITORY) private repository: ISubscribersRepository,
+  ) {}
 
   public async addNewEmail(email: string) {
     try {

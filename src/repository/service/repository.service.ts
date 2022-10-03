@@ -7,8 +7,8 @@ import { ISubscribersRepository } from '../interface/ISubscribersRepository';
 export class SubscribersRepository implements ISubscribersRepository {
   dbPath: string;
 
-  constructor() {
-    this.dbPath = '/src/repository/local/db.txt';
+  constructor(dbPath) {
+    this.dbPath = dbPath;
   }
 
   append(subscriber: SubscriberDTO) {
