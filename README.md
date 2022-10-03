@@ -13,7 +13,6 @@ Uses the Binance API.
 
 ![Architecture](https://raw.githubusercontent.com/GenesisEducationKyiv/hw1-se-school_2022-code-review-swefd/master/demo/architecture.png)
 
-
 ## Config variables
 
 To run this project, you will **need to add/change** the following variables in `./config/config.json` file.
@@ -108,12 +107,7 @@ To run this project, you will **need to add/change** the following variables in 
 
 ```json
 {
-  "message": "Emails sent successfully",
-  "emailAddress": [
-    "test@gmail.com",
-    "test1@gmail.com",
-    "test2@gmail.com"
-  ]
+  "message": "All Emails were sent successfully"
 }
 ```
 
