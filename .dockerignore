@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+
+.dockerignore
+
+.nyc_output
+node_modules
+
+.eslintrc.js
+.prettierrc
+README.md
+
+/apps/gses2-app/.env

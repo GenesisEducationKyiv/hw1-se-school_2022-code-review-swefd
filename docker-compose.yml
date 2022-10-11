@@ -1,0 +1,46 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    volumes:
+      - /var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    env_file:
+      - ./.env
+
+
+  api:
+    container_name: gses2-app
+    build:
+      dockerfile: apps/gses2-app/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - apps/gses2-app/.env
+    command: npm run start:dev gses2-app
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbitmq
+
+
+  logger:
+    container_name: logger-app
+    build:
+      dockerfile: apps/logger-app/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - apps/gses2-app/.env
+    command: npm run start:dev logger-app
+    depends_on:
+      - rabbitmq

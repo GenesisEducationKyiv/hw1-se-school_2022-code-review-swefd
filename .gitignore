@@ -5,3 +5,6 @@ npm-debug.log
 !/.nyc_output/
 /dist/
 /.nyc_output/
+!/apps/gses2-app/src/repository/local/db.txt
+/coverage
+!/apps/gses2-app/.env
