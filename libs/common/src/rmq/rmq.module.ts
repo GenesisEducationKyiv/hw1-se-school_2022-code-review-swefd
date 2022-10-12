@@ -5,6 +5,7 @@ import { RmqService } from './rmq.service';
 
 interface RmqModuleOptions {
   name: string;
+  queue: string;
 }
 
 @Module({
@@ -13,7 +14,7 @@ interface RmqModuleOptions {
   exports: [RmqService],
 })
 export class RmqModule {
-  static register({ name }: RmqModuleOptions): DynamicModule {
+  static register({ name, queue }: RmqModuleOptions): DynamicModule {
     return {
       module: RmqModule,
       imports: [
@@ -24,7 +25,7 @@ export class RmqModule {
               transport: Transport.RMQ,
               options: {
                 urls: ['amqp://rabbitmq:5672'],
-                queue: 'LOG_QUEUE',
+                queue: queue,
               },
             }),
             inject: [ConfigService],

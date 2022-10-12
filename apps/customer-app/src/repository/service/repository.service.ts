@@ -1,21 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
-import { SubscriberDTO } from '../dto/subscriber.dto';
-import { ISubscribersRepository } from '../interface/ISubscribersRepository';
-import { CustomerDto } from '../../../../customer-app/src/repository/dto/customer.dto';
+import { CustomerDto } from '../dto/customer.dto';
+import { ICustomersRepository } from '../interface/ICustomersRepository';
 
 @Injectable()
-export class SubscribersRepository implements ISubscribersRepository {
+export class SubscribersRepository implements ICustomersRepository {
   dbPath: string;
 
   constructor(dbPath) {
     this.dbPath = dbPath;
   }
 
-  append(subscriber: SubscriberDTO) {
+  append(customer: CustomerDto) {
     return fs.promises.appendFile(
       process.cwd() + this.dbPath,
-      '\n' + subscriber.email,
+      '\n' + customer.email,
       { encoding: 'utf8' },
     );
   }
@@ -48,10 +47,10 @@ export class SubscribersRepository implements ISubscribersRepository {
     const strEmails: string[] = fs
       .readFileSync(process.cwd() + this.dbPath, 'utf-8')
       .split('\n');
-    const subscribers: SubscriberDTO[] = [];
+    const subscribers: CustomerDto[] = [];
 
     strEmails.forEach((email) => {
-      subscribers.push(new SubscriberDTO(email));
+      subscribers.push(new CustomerDto(email));
     });
 
     return subscribers;

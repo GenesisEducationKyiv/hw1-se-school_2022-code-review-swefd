@@ -16,9 +16,9 @@ export class SubscriptionService {
       const includesEmail = await this.repository.includesEmail(email);
       if (includesEmail) {
         await this.repository.append(new SubscriberDTO(email));
-        return 'Email successfully subscribed';
+        return true;
       } else {
-        return 'This email already exist';
+        return false;
       }
     } catch (error) {
       console.log(error);
@@ -26,5 +26,9 @@ export class SubscriptionService {
         `Error occurred while creating new subscription': ${error.message}`,
       );
     }
+  }
+
+  public removeEmail(email: string) {
+    this.repository.delete(new SubscriberDTO(email));
   }
 }

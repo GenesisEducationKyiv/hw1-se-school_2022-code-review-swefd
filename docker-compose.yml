@@ -44,3 +44,18 @@ services:
     command: npm run start:dev logger-app
     depends_on:
       - rabbitmq
+
+  customer:
+    container_name: customer-app
+    build:
+      dockerfile: apps/customer-app/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - apps/gses2-app/.env
+    command: npm run start:dev customer-app
+    depends_on:
+      - rabbitmq

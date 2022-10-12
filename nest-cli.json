@@ -28,6 +28,15 @@
         "tsConfigPath": "apps/logger-app/tsconfig.app.json"
       }
     },
+    "customer-app": {
+      "type": "application",
+      "root": "apps/customer-app",
+      "entryFile": "main",
+      "sourceRoot": "apps/customer-app/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/customer-app/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",
