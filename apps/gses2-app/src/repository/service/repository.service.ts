@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import { SubscriberDTO } from '../dto/subscriber.dto';
 import { ISubscribersRepository } from '../interface/ISubscribersRepository';
+import { CustomerDto } from '../../../../customer-app/src/repository/dto/customer.dto';
 
 @Injectable()
 export class SubscribersRepository implements ISubscribersRepository {
@@ -17,6 +18,25 @@ export class SubscribersRepository implements ISubscribersRepository {
       '\n' + subscriber.email,
       { encoding: 'utf8' },
     );
+  }
+
+  delete(customer: CustomerDto) {
+    const allEmails = this.getAllEmails();
+    const customerIndex = allEmails.indexOf(customer.email);
+    if (!customerIndex) {
+      return false;
+    }
+
+    allEmails.slice(customerIndex, 1);
+
+    let result = '';
+
+    allEmails.forEach((email) => {
+      result += email + '\n';
+    });
+
+    fs.writeFileSync(process.cwd() + this.dbPath, result);
+    return true;
   }
 
   async includesEmail(email: string) {
