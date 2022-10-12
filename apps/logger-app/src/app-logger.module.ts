@@ -12,7 +12,7 @@ const config = ConfigModule.forRoot({
   imports: [
     config,
     CustomLoggerModule,
-    RmqModule.register({ name: 'RATE_PROVIDERS_RMQ' }),
+    RmqModule.register({ name: 'RATE_PROVIDERS_RMQ', queue: 'LOG_QUEUE' }),
   ],
   controllers: [],
   providers: [],
