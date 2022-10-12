@@ -9,7 +9,10 @@ const config = ConfigModule.forRoot({
 });
 
 @Module({
-  imports: [config, RmqModule.register({ name: 'RATE_PROVIDERS_RMQ' })],
+  imports: [
+    config,
+    RmqModule.register({ name: 'RATE_PROVIDERS_RMQ', queue: 'LOG_QUEUE' }),
+  ],
   providers: [LogService],
   exports: [LogService],
 })
